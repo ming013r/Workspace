@@ -1,0 +1,21 @@
+
+    image_height = 32
+    image_width  = 32
+    num_channels = 3
+    num_output_classes = 10
+    epoch_size =50000
+    minibatchsize=64
+
+ with C.layers.default_options(activation=C.ops.relu, pad=True):
+        z = C.layers.Sequential([
+            C.layers.For(range(2), lambda : [
+                C.layers.Convolution2D((3,3), 64),
+                C.layers.Convolution2D((3,3), 64),
+                C.layers.MaxPooling((3,3), (2,2))
+            ]),
+            C.layers.For(range(2), lambda i: [
+                C.layers.Dense([256,128][i]),
+                C.layers.Dropout(0.5)
+            ]),
+            C.layers.Dense(num_output_classes, activation=None)
+        ])(scaled_input)
