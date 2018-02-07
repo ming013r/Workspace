@@ -25,7 +25,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".CourseEntry" />
-        <activity android:name=".CourseIndex"></activity>
+        <activity android:name=".CourseIndex" />
+        <activity android:name=".VideoList" />
+        <activity android:name=".WatchVideo"></activity>
     </application>
 
 </manifest>

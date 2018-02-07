@@ -59,7 +59,7 @@ public class CourseEntry extends AppCompatActivity {
     {
 
         Intent it_go = new Intent();
-        it_go.putExtra("cid",String.valueOf(CourseSrc.get(position).Id));
+        it_go.putExtra("cid",CourseSrc.get(position).Id);
         it_go.putExtra("token",token);
         it_go.setClass(CourseEntry.this,CourseIndex.class);
         startActivity(it_go);

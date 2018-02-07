@@ -17,3 +17,14 @@ class CourseModel
         return Name;
     }
 }
+class VideoModel
+{
+    public int id ;
+    public String Name;
+    public String URL;
+    @Override
+    public String toString()
+    {
+        return Name  ;
+    }
+}
