@@ -33,6 +33,7 @@ public class Login extends AppCompatActivity {
 
         Permission_Ask();
         webapi =new WebApi();
+        webapi.startInternet();
         helper = new LiteAdapter(this);
 
         email=(EditText)findViewById(R.id.email);
