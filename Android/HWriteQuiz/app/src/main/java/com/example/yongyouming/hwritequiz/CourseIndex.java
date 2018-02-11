@@ -64,12 +64,16 @@ public class CourseIndex extends AppCompatActivity {
         switch (feature)
         {
             case 0:
+                it_go.setClass(CourseIndex.this,QuizHistoryList.class);
+                startActivity(it_go);
                 break;
             case 1:
                 it_go.setClass(CourseIndex.this,VideoList.class);
                 startActivity(it_go);
                 break;
             case 2:
+                it_go.setClass(CourseIndex.this,QuizList.class);
+                startActivity(it_go);
                 break;
         }
     }

@@ -128,3 +128,9 @@ public class WebApi {
 
     }
 }
+class Constants {
+    public static final String UPLOAD_URL = "http://"+ConfigFile.IP+"/api/"+"QuizsApi/PostImage";
+    public static final String dURL = "http://"+ConfigFile.IP;
+
+
+}

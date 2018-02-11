@@ -25,4 +25,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    //Add this Line Upload Form-data http
+    compile 'net.gotev:uploadservice:2.1'
+
+    //imageview
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.commit451:PhotoView:1.2.4'
+
+
 }

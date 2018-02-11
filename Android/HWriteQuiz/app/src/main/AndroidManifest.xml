@@ -27,7 +27,13 @@
         <activity android:name=".CourseEntry" />
         <activity android:name=".CourseIndex" />
         <activity android:name=".VideoList" />
-        <activity android:name=".WatchVideo"></activity>
+        <activity android:name=".WatchVideo" />
+        <activity android:name=".QuizList" />
+        <activity android:name=".OnQuiz" />
+        <activity android:name=".QuizHistoryList" />
+        <activity android:name=".QuizDetail" />
+        <activity android:name=".SampleList" />
+        <activity android:name=".SampleDisplay"></activity>
     </application>
 
 </manifest>
