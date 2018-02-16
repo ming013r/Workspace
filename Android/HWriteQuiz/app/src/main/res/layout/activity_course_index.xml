@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.yongyouming.hwritequiz.CourseIndex">
+
+    <Button
+        android:id="@+id/qlist_btn"
+        android:layout_width="88dp"
+        android:layout_height="81dp"
+        android:layout_marginEnd="44dp"
+        android:background="?android:attr/colorMultiSelectHighlight"
+        android:text="前往作答"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pastQuiz" />
+
+    <Button
+        android:id="@+id/pastQuiz"
+        android:layout_width="88dp"
+        android:layout_height="81dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/holo_blue_light"
+        android:text="歷史試卷"
+        app:layout_constraintEnd_toStartOf="@+id/qlist_btn"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toEndOf="@+id/videos"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/videos"
+        android:layout_width="88dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="44dp"
+        android:background="@android:color/holo_green_light"
+        android:text="觀看教材"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/pastQuiz" />
+</android.support.constraint.ConstraintLayout>
