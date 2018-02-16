@@ -14,67 +14,114 @@
                     top: 120px;
                     right: 0;
                 }
-            .realbody {
-                padding-top: 65px;
-                padding-right:100px;
-                padding-left:100px;
-                height: 100%;
-                margin: 0;
-            }
-            .page-header {
-                background-image: url("https://srilankafoundation.org/wp-content/uploads/2016/07/Beach.jpg") ;
-                -webkit-background-size: cover; /* For WebKit*/
-                -moz-background-size: cover;    /* Mozilla*/
-                -o-background-size: cover;      /* Opera*/
-                background-size: 1000px ;
-                background-repeat: no-repeat;
-                height: 300px;
-                width: 100%;
-            }
-            
-            
-            
-            .navbar {
-                background: none;
-            }
-                body, html {
-                    height: 100%;
-                    margin: 0;
-                }
-            
-            .hero-image {
-                background-image: url("https://srilankafoundation.org/wp-content/uploads/2016/07/Beach.jpg");
-                height: 50%;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-size: cover;
-                position: relative;
-            }
-            
-            .hero-text {
-                text-align: center;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                color: white;
-            }
-            
-            .hero-text button {
-                border: none;
-                outline: 0;
-                display: inline-block;
-                padding: 10px 25px;
-                color: black;
-                background-color: #ddd;
-                text-align: center;
-                cursor: pointer;
-            }
-            
-            .hero-text button:hover {
-                background-color: #555;
-                color: white;
-            }
+				.realbody {
+					padding-top: 50px;
+					padding-right:100px;
+					padding-left:100px;
+					height: 100%;
+					margin-right: auto;
+					margin-left: auto;
+				}
+				.itemBlock{
+					background-color: #eeeeee;
+					margin:5px;
+					
+					background-image: url("https://srilankafoundation.org/wp-content/uploads/2016/07/Beach.jpg");
+					height: 300px;
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: cover;
+					position: relative;
+				}
+
+				.item-text {
+					text-align: center;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					color: white;
+				}
+				
+				.item-text button {
+					border: none;
+					outline: 0;
+					display: inline-block;
+					padding: 10px 25px;
+					color: black;
+					background-color: #ddd;
+					text-align: center;
+					cursor: pointer;
+					
+					border-radius: 15px;
+				}
+				
+				.item-text button:hover {
+					background-color: #555;
+					color: white;
+				}
+				
+				.page-header {
+					background-image: url("https://srilankafoundation.org/wp-content/uploads/2016/07/Beach.jpg") ;
+					-webkit-background-size: cover; /* For WebKit*/
+					-moz-background-size: cover;    /* Mozilla*/
+					-o-background-size: cover;      /* Opera*/
+					background-size: 1000px ;
+					background-repeat: no-repeat;
+					height: 300px;
+					width: 100%;
+				}
+				
+				
+				
+				.navbar {
+					background: none;
+				}
+				body, html {
+					height: 100%;
+					margin: 0;
+				}
+				.imageContainer
+				{
+					padding-top:50px;
+				}
+				.hero-image {
+					background-image: url("https://srilankafoundation.org/wp-content/uploads/2016/07/Beach.jpg");
+					height: 500px;
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: cover;
+					position: relative;
+					
+					padding-top:100px;
+				}
+				
+				.hero-text {
+					text-align: center;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					color: white;
+				}
+				
+				.hero-text button {
+					border: none;
+					outline: 0;
+					display: inline-block;
+					padding: 10px 25px;
+					color: black;
+					background-color: #ddd;
+					text-align: center;
+					cursor: pointer;
+				}
+				
+				.hero-text button:hover {
+					background-color: #555;
+					color: white;
+				}
+				
+				
             </style>
     </head>
     <body>
@@ -103,20 +150,63 @@
             </div>
             <label class="navText">Fuck this label</label>
         </nav>
-        
+		<div class="imageContainer">
+			<div class="hero-image">
+				<div class="hero-text">
+					<h1 style="font-size:50px">Only Sample,sample only</h1>
+					<p>Design Here</p>
+					<button>Contact me</button>
+				</div>
+			</div>
+		</div>
+		
+		
         <div class="realbody">
-            <div class="hero-image">
-                <div class="hero-text">
-                    <h1 style="font-size:50px">I am John Doe</h1>
-                    <p>And I'm a Photographer</p>
-                    <button>Hire me</button>
-                </div>
-            </div>
-            
-            <p>Page Content..</p>
+			<div class="row typeIndex" >
+				<div class="col-md-3">
+					<div class="itemBlock">
+						<div class="item-text">
+							<h1 style="font-size:20px">Only Sample,sample only</h1>
+							<p>Design Here</p>
+							<button>選擇</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 ">
+					<div class="itemBlock">
+						<div class="item-text">
+						<h1 style="font-size:20px">Only Sample,sample only</h1>
+						<p>Design Here</p>
+						<button>選擇</button>
+					</div>
+					</div>
+				</div>
+				<div class="col-md-3 ">
+				  <div class="itemBlock">
+					<div class="item-text">
+						<h1 style="font-size:20px">Only Sample,sample only</h1>
+						<p>Design Here</p>
+						<button>選擇</button>
+					</div>
+				  </div>
+				</div>
+				<div class="col-md-3 ">
+				  <div class="itemBlock">
+					<div class="item-text">
+						<h1 style="font-size:20px">Only Sample,sample only</h1>
+						<p>Design Here</p>
+						<button>選擇</button>
+					</div>
+				  </div>
+				</div>
+			</div>
         </div>
-
-        
+		<input type="button" id="remove" value="go"/>
+        <script>
+			$("#remove").click(function(){
+			
+			});
+		</script>
     </body>
 </html>
 
