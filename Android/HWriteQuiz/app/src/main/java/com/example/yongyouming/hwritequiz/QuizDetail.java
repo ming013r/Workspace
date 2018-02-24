@@ -59,7 +59,7 @@ public class QuizDetail extends AppCompatActivity {
         TextView score =(TextView)findViewById(R.id.tv_myScore);
         score.setText("Score : "+ansmodel.Score);
         TextView mistake =(TextView)findViewById(R.id.tv_myMistake);
-        mistake.setText("Usual mistake : "+ansmodel.UsualMistake);
+        mistake.setText("常犯錯誤 : "+ansmodel.UsualMistake);
 
 
 
@@ -90,13 +90,11 @@ public class QuizDetail extends AppCompatActivity {
     }
     void gotoSample()
     {
-        Intent getEX=getIntent();
-        String qid = getEX.getStringExtra("qid");
-        String token = getEX.getStringExtra("token");
-
-
         Intent it =new Intent();
         it.putExtra("qid",qid);
+        it.putExtra("cid",cid);
+        it.putExtra("token",cid);
+
         it.setClass(QuizDetail.this,SampleList.class);
         startActivity(it);
     }

@@ -56,7 +56,7 @@
         </android.support.constraint.ConstraintLayout>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/quizView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout_editor_absoluteX="144dp"

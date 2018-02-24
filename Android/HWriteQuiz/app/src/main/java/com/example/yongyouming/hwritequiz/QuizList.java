@@ -37,7 +37,7 @@ public class QuizList extends AppCompatActivity {
         webapi = new WebApi();
 
         QuizList = new ArrayList<QuizesModel>();
-        AddtoList(webapi.GET("QuizsApi/GetQuizPart?status=2&qid=&token="));
+        AddtoList(webapi.GET("QuizsApi/GetQuizPart?status=1&qid=&token="));
 
         listAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,QuizList);
         lv_quiz.setAdapter(listAdapter);

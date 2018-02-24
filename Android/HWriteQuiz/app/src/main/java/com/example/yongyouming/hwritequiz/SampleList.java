@@ -18,11 +18,19 @@ import java.util.List;
 
 public class SampleList extends AppCompatActivity {
     private ArrayAdapter<String> listAdapter;
+
+    WebApi webapi;
+    int qid,cid;
+    String token;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sample_list);
+        setParas();
         ListQuiz();
+
     }
 
     private void ToList(String jsonstring)
@@ -50,7 +58,7 @@ public class SampleList extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3)
                 {
-                    CallDetail(String.valueOf(AnsL.get(position).id));
+                    CallDetail(AnsL.get(position).id);
                 }
             });
         }catch(JSONException e){
@@ -61,21 +69,30 @@ public class SampleList extends AppCompatActivity {
 
     void ListQuiz()
     {
-
-        Intent it =getIntent();
-        String qid =it.getStringExtra("qid");
-
-
         WebApi webApi=new WebApi();
-
-        ToList(webApi.POST("QuizsApi/ListSample?qid="+qid,""));
+        String jsonsrc=webApi.GET("QuizsApi/ListSample?qid="+qid);
+        ToList(jsonsrc);
     }
-    void CallDetail(String aid)
+    void CallDetail(int aid)
     {
 
         Intent it2=new Intent();
         it2.putExtra("aid",aid);
+        it2.putExtra("qid",qid);
+        it2.putExtra("cid",cid);
+        it2.putExtra("token",token);
         it2.setClass(SampleList.this,SampleDisplay.class);
         startActivity(it2);
+    }
+
+
+    void setParas()
+    {
+        webapi=new WebApi();
+
+        Intent it_prev=getIntent();
+        qid=it_prev.getIntExtra("qid",-1);
+        cid=it_prev.getIntExtra("cid",-1);
+        token =it_prev.getStringExtra("token");
     }
 }

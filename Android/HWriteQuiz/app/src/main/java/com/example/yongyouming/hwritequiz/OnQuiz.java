@@ -96,21 +96,20 @@ public class OnQuiz extends AppCompatActivity {
             }
         });
         TextView qname =(TextView)findViewById(R.id.Qname);
-        Intent it = getIntent();
-        String token =it.getStringExtra("Token");
-        String qid ="";
-        qid =it.getStringExtra("Qid");
+
         qname.setText("試卷名稱"+GetName(qid));
 
 
 
-        final ImageView quiz =(ImageView)findViewById(R.id.imageView);
+        final ImageView quiz =(ImageView)findViewById(R.id.quizView);
         Glide.with(this).load(Constants.dURL+GetImage(qid)).asBitmap().into(new SimpleTarget<Bitmap>() {
             @Override
             public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                 quiz.setImageBitmap(resource);
             }
         });
+
+
         //zoom
         PhotoViewAttacher pAttacher;
         pAttacher = new PhotoViewAttacher(quiz);
@@ -130,7 +129,7 @@ public class OnQuiz extends AppCompatActivity {
         Date date = new Date();
         DateFormat df = new SimpleDateFormat("-mm-ss");
 
-        newPicFile = "Bild"+ df.format(date) + ".jpg";
+        newPicFile = "MyQuiz"+ df.format(date) + ".jpg";
         File dir= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
 
 
@@ -155,7 +154,7 @@ public class OnQuiz extends AppCompatActivity {
         cid=it_prev.getIntExtra("cid",-1);
         token =it_prev.getStringExtra("token");
     }
-    public String GetName(String qid)
+    public String GetName(int qid)
     {
         String Name="";
         try{
@@ -170,7 +169,7 @@ public class OnQuiz extends AppCompatActivity {
         }
         return Name;
     }
-    public String GetImage(String qid)
+    public String GetImage(int qid)
     {
         String Image="";
         try{
