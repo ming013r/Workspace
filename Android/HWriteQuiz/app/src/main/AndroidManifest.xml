@@ -18,11 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".CourseEntry" />
         <activity android:name=".CourseIndex" />
@@ -33,7 +29,14 @@
         <activity android:name=".QuizHistoryList" />
         <activity android:name=".QuizDetail" />
         <activity android:name=".SampleList" />
-        <activity android:name=".SampleDisplay"></activity>
+        <activity android:name=".SampleDisplay" />
+        <activity android:name=".CheckVersion">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
