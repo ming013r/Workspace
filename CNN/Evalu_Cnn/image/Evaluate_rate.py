@@ -2,7 +2,7 @@ from cntk.ops.functions import load_model
 from PIL import Image 
 import numpy as np
 
-modelName="ConvNet_mytrain_0.dnn"
+modelName="ConvNet_mytrain_29.dnn"
 z = load_model(modelName)
 
 #########################
