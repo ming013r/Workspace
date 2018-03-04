@@ -2,6 +2,7 @@ package com.example.a409lab00.interactiveclassroom;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,6 +35,8 @@ public class PopQuestion extends Activity {
     classQuestion currentQuestion;
     private Handler handler = new Handler();
 
+
+    ColorStateList defaultColor;
     int currentIndex=0;
     String token;
     Boolean Achecked=false;
@@ -104,6 +107,8 @@ public class PopQuestion extends Activity {
 
 
 
+        defaultColor=TV_answerA.getTextColors();
+
 
         //離開
         Button exit =(Button)findViewById(R.id.exit);
@@ -164,8 +169,19 @@ public class PopQuestion extends Activity {
             @Override
             public void onClick(View view) {
                 webapi.GET("LogAPI/SaveLog?name=點擊解釋教材"+"&content=點擊"+"&token="+token);
-                Intent intent = new Intent(Intent.ACTION_VIEW , Uri.parse(QuestionQueue.get(currentIndex).explain_url));
-                startActivity(intent);
+
+                String url =QuestionQueue.get(currentIndex).explain_url;
+                if(url.equals("URL")||url.equals("解釋")||url==null)
+                {
+                    Toast.makeText(PopQuestion.this,"沒有相關資源",Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    String urls =QuestionQueue.get(currentIndex).explain_url;
+                    Intent intent = new Intent(Intent.ACTION_VIEW , Uri.parse(QuestionQueue.get(currentIndex).explain_url));
+                    startActivity(intent);
+                }
+
             }
         });
 
@@ -178,7 +194,7 @@ public class PopQuestion extends Activity {
         ///設定第一題
         currentQuestion=QuestionQueue.get(0);
         type=currentQuestion.type;
-        explain.setText(currentQuestion.explain);
+        explain.setText("補充解釋 : "+currentQuestion.explain);
         itemCount=currentQuestion.itemCount;
         TV_content.setText(currentQuestion.content);
         AnswerText(currentQuestion);
@@ -368,7 +384,7 @@ public class PopQuestion extends Activity {
         currentQuestion=QuestionQueue.get(currentIndex);
         TV_content.setText(currentQuestion.content);
         type= currentQuestion.type;
-        explain.setText(QuestionQueue.get(currentIndex).explain);
+        explain.setText("補充解釋 : "+QuestionQueue.get(currentIndex).explain);
         itemCount=QuestionQueue.get(currentIndex).itemCount;
 
         AnswerText(currentQuestion);
@@ -378,6 +394,10 @@ public class PopQuestion extends Activity {
         SetToDefault();
 
         recheck(currentQuestion);
+
+
+
+
     }
     void prevQuestion()
     {
@@ -392,7 +412,7 @@ public class PopQuestion extends Activity {
 
         TV_content.setText(currentQuestion.content);
         type= currentQuestion.type;
-        explain.setText(QuestionQueue.get(currentIndex).explain);
+        explain.setText("補充解釋 : "+QuestionQueue.get(currentIndex).explain);
         itemCount=QuestionQueue.get(currentIndex).itemCount;
 
         AnswerText(currentQuestion);
@@ -402,6 +422,9 @@ public class PopQuestion extends Activity {
         uncheck();///set all to false
         SetToDefault();
         recheck(currentQuestion);
+
+
+
 
     }
     void uncheck()
@@ -414,13 +437,18 @@ public class PopQuestion extends Activity {
     }
     void AnswerText(classQuestion ques)
     {
+        TV_answerA.setTextColor(defaultColor);
+        TV_answerB.setTextColor(defaultColor);
+        TV_answerC.setTextColor(defaultColor);
+        TV_answerD.setTextColor(defaultColor);
+
         currentAnswer=ParseAns(ques);
         String text="";
         String myans =webapi.POST("QuestionAPI/MyAnswer","token="+token+"&id="+ques.id+"&gid="+gid);
         String[] myansArr=new String[4];
         myansArr=myans.split(",");
 
-        for (int i=0;i==currentAnswer.size()-1;i++) {
+        for (int i=0;i<=currentAnswer.size()-1;i++) {
             if(way==2)//歷屆試卷模
             {
                 switch (i){
@@ -437,35 +465,53 @@ public class PopQuestion extends Activity {
                     case 1:
                         if(currentAnswer.get(i).chked.equals("true"))
                         {
-                            TV_answerA.setText(currentAnswer.get(i).text+"*");
+                            TV_answerB.setText(currentAnswer.get(i).text+"*");
                         }
                         else
                         {
-                            TV_answerA.setText(currentAnswer.get(i).text);
+                            TV_answerB.setText(currentAnswer.get(i).text);
                         }
                         break;
                     case 2:
                         if(currentAnswer.get(i).chked.equals("true"))
                         {
-                            TV_answerA.setText(currentAnswer.get(i).text+"*");
+                            TV_answerC.setText(currentAnswer.get(i).text+"*");
                         }
                         else
                         {
-                            TV_answerA.setText(currentAnswer.get(i).text);
+                            TV_answerC.setText(currentAnswer.get(i).text);
                         }
                         break;
                     case 3:
                         if(currentAnswer.get(i).chked.equals("true"))
                         {
-                            TV_answerA.setText(currentAnswer.get(i).text+"*");
+                            TV_answerD.setText(currentAnswer.get(i).text+"*");
                         }
                         else
                         {
-                            TV_answerA.setText(currentAnswer.get(i).text);
+                            TV_answerD.setText(currentAnswer.get(i).text);
                         }
                         break;
                 }
-
+                switch (i)
+                {
+                    case 0:
+                        if(myansArr[0].equals("true"))
+                        {TV_answerA.setTextColor(Color.RED);}
+                        break;
+                    case 1:
+                        if(myansArr[1].equals("true"))
+                        {TV_answerB.setTextColor(Color.RED);}
+                        break;
+                    case 2:
+                        if(myansArr[2].equals("true"))
+                        {TV_answerC.setTextColor(Color.RED);}
+                        break;
+                    case 3:
+                        if(myansArr[3].equals("true"))
+                        {TV_answerD.setTextColor(Color.RED);}
+                        break;
+                }
             }
             else//作答模式
             {
@@ -484,25 +530,8 @@ public class PopQuestion extends Activity {
                         break;
                 }
             }
-            switch (i)
-            {
-                case 0:
-                    if(myansArr.equals("true"))
-                    {TV_answerA.setTextColor(Color.RED);}
-                    break;
-                case 1:
-                    if(myansArr.equals("true"))
-                    {TV_answerB.setTextColor(Color.RED);}
-                    break;
-                case 2:
-                    if(myansArr.equals("true"))
-                    {TV_answerC.setTextColor(Color.RED);}
-                    break;
-                case 3:
-                    if(myansArr.equals("true"))
-                    {TV_answerD.setTextColor(Color.RED);}
-                    break;
-            }
+
+
         }
     }
     String assembleAnswer()
@@ -573,6 +602,8 @@ public class PopQuestion extends Activity {
         itemB.setBackgroundColor(Color.GREEN);
         itemC.setBackgroundColor(Color.GREEN);
         itemD.setBackgroundColor(Color.GREEN);
+
+
 
         if(way==2)
         {

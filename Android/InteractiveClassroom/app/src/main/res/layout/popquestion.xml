@@ -185,6 +185,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/remindCnt" />
 
             <TextView
+                android:id="@+id/QAnswerA"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="QuestionAnswerA"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Qcontent" />
+
+            <TextView
                 android:id="@+id/QAnswerB"
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
@@ -216,18 +228,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/QAnswerC" />
-
-            <TextView
-                android:id="@+id/QAnswerA"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="QuestionAnswerA"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/Qcontent" />
 
             <TextView
                 android:id="@+id/explain"

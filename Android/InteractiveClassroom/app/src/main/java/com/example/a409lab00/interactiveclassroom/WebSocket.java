@@ -98,8 +98,19 @@ public class WebSocket {
                     question.type=Integer.parseInt(que.getString("type"));
                     question.itemCount=Integer.parseInt(que.getString("itemCount"));
 
-                    question.explain=que.getString("explain");
-                    question.explain_url=que.getString("explain_url");
+
+
+                    String explain=que.getString("explain");
+                    if(explain.equals("解釋")||explain.equals("null")||explain==null)
+                    {
+                        question.explain="";
+                    }
+                    else
+                    {
+                        question.explain=explain;
+                    }
+
+                    question.explain_url = que.getString("explain_url");
 
                     questionList.add(question);
                 }

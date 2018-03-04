@@ -61,7 +61,7 @@ public class MainView extends AppCompatActivity {
     int beaconstatus=1;
     List<classQuestion> QuestionQueue;
 
-    TextView btn_stopService;
+    TextView btn_status;
     int sec=0;
 
     boolean loginSent=false;
@@ -70,6 +70,9 @@ public class MainView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_view);
+        btn_status=(TextView)findViewById(R.id.destroy);
+
+
 
         Intent it =getIntent();
         token = it.getStringExtra("token");
@@ -90,59 +93,41 @@ public class MainView extends AppCompatActivity {
         }
 
 
+
         ///////////
-       // Runnable myRunnable =BeaconRunnable("token");
-       // handler.removeCallbacks(myRunnable);
-       // handler.postDelayed(myRunnable, 3000);
+        Runnable myRunnable =BeaconRunnable();
+        handler.removeCallbacks(myRunnable);
+        // 設定間隔的時間
+        handler.postDelayed(myRunnable, 3000);
+        //////////
+        /*
         new Thread(new Runnable() {
             public void run() {
-                btn_stopService.post(new Runnable() {
+                btn_status.post(new Runnable() {
                     public void run() {
-                        counter+=10;
-                        if(counter%30==0)
-                        {
-                            if(scanned)
-                            {
-                                changeBeaconStatus();
-                                btn_stopService.setText(BeaconStatus());
-                                if(!loginSent)
-                                {
-                                    webapi.GET("LogAPI/SaveLog?name=Login"+"&content=BeaconSuccess"+"&token="+token);
-                                    loginSent=true;
-                                }
-                            }
-                            else
-                            {
-                                if(!loginSent)
-                                {
-                                    webapi.GET("LogAPI/SaveLog?name=Login"+"&content=BeaconNotFound"+"&token="+token);
-                                    loginSent=true;
-                                }
-                            }
-                            scanned=false;
-                        }
-
-                        btn_stopService.postDelayed(this, 1000);/////by api better
+                        btn_status.setText("Counter:"+counter);
+                        logtoServer();
+                        btn_status.postDelayed(this, 1000);/////by api better
                     }
                 });
             }
         }).start();
-
+*/
         //////////
 
 
 
 
 
+/*  Stop service trigger
 
-        btn_stopService=(TextView)findViewById(R.id.destroy);
-        btn_stopService.setOnClickListener(new View.OnClickListener(){
+        btn_status.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 stopService(serviceIntent);
             }
         });
-
+*/
 
         String broadcastJson=webapi.GET("Broadcast_reply/getBroadcast?cid="+cid);
         List<Broadcast> broadcasts=getBroadcast(broadcastJson);
@@ -239,7 +224,7 @@ public class MainView extends AppCompatActivity {
 
     }
 
-    private Runnable BeaconRunnable(final String token)
+    private Runnable BeaconRunnable()
     {
         Runnable aRunnable = new Runnable(){
 
@@ -250,7 +235,7 @@ public class MainView extends AppCompatActivity {
                     if(scanned)
                     {
                         changeBeaconStatus();
-                        btn_stopService.setText(BeaconStatus());
+                        btn_status.setText(BeaconStatus());
                         if(!loginSent)
                         {
                             webapi.GET("LogAPI/SaveLog?name=Login"+"&content=BeaconSuccess"+"&token="+token);
@@ -301,6 +286,7 @@ public class MainView extends AppCompatActivity {
                         + (scanRecord[startByte + 21] & 0xff);
                 //在掃描過程中，判斷是否有掃到
                 scanned=true;
+
             }
         }
     };
@@ -313,6 +299,34 @@ public class MainView extends AppCompatActivity {
             hexChars[j * 2 + 1] = hexArray[v & 0x0F];
         }
         return new String(hexChars);
+    }
+    private  void logtoServer()
+    {
+        counter+=10;
+        if(counter%30==0)
+        {
+            if(scanned)
+            {
+                changeBeaconStatus();
+                btn_status.setText(BeaconStatus());
+                if(!loginSent)
+                {
+                    webapi.GET("LogAPI/SaveLog?name=Login"+"&content=BeaconSuccess"+"&token="+token);
+                    loginSent=true;
+                }
+            }
+            else
+            {
+                if(!loginSent)
+                {
+                    webapi.GET("LogAPI/SaveLog?name=Login"+"&content=BeaconNotFound"+"&token="+token);
+                    loginSent=true;
+                }
+            }
+            scanned=false;
+        }
+
+
     }
     @Override
     protected void onDestroy() {

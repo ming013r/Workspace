@@ -95,7 +95,7 @@ public class ReviewGroup extends AppCompatActivity {
         @Override
         public String toString()
         {
-            return "["+title+"]"+"　　結束日期："+stop;
+            return title+"   結束日期："+stop;
         }
     }
 
