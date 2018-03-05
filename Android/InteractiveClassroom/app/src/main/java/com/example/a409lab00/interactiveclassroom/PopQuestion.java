@@ -517,16 +517,16 @@ public class PopQuestion extends Activity {
             {
                 switch (i){
                     case 0:
-                        TV_answerA.setText(currentAnswer.get(i).text);
+                        TV_answerA.setText("A."+currentAnswer.get(i).text);
                         break;
                     case 1:
-                        TV_answerB.setText(currentAnswer.get(i).text);
+                        TV_answerB.setText("B."+currentAnswer.get(i).text);
                         break;
                     case 2:
-                        TV_answerC.setText(currentAnswer.get(i).text);
+                        TV_answerC.setText("C."+currentAnswer.get(i).text);
                         break;
                     case 3:
-                        TV_answerD.setText(currentAnswer.get(i).text);
+                        TV_answerD.setText("D."+currentAnswer.get(i).text);
                         break;
                 }
             }
